@@ -21,10 +21,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("---")
-# 3. Sección Técnica Desplegable (Hardware)
-with st.expander("⚙️ Ver Ficha Técnica del Sistema Base (Hardware Modelado)"):
-    st.info("Las estimaciones de esta Inteligencia Artificial están calibradas bajo las curvas de eficiencia del siguiente hardware:")
+# 3. Sección Técnica Desplegable (Hardware y Configuración)
+with st.expander("⚙️ Ver Ficha Técnica y Configuración del Sistema Base"):
+    st.info("Las estimaciones de esta Inteligencia Artificial están calibradas bajo las curvas de eficiencia y la configuración geométrica del siguiente arreglo:")
     
+    # --- FILA 1: HARDWARE ---
     colA, colB = st.columns(2)
     with colA:
         st.markdown("**Módulo Fotovoltaico**")
@@ -32,24 +33,42 @@ with st.expander("⚙️ Ver Ficha Técnica del Sistema Base (Hardware Modelado)
         st.markdown("* **Capacidad Unitaria:** 630 W")
         st.markdown("* **Eficiencia:** 23.3%")
         
-        # Corrección del botón: leer el archivo en bytes antes de descargarlo
         if os.path.exists("panel.pdf"):
             with open("panel.pdf", "rb") as pdf_file:
                 pdf_bytes = pdf_file.read()
                 st.download_button(label="📥 Descargar Ficha del Panel", data=pdf_bytes, file_name="Ficha_Panel.pdf", mime='application/pdf')
 
-with colB:
+    with colB:
         st.markdown("**Inversor Central (Base de Datos SAM/CEC)**")
         st.markdown("* **Marca/Modelo:** Fronius Primo 5.0-1 (240V)")
         st.markdown("* **Potencia Máxima CA:** 5.0 kW (5000 Wac)")
         st.markdown("* **Eficiencia Ponderada CEC:** 96.93%")
         st.markdown("* **Voltaje Nominal CA:** 240 Vac")
         
-        # Botón de descarga
         if os.path.exists("inversor.pdf"):
             with open("inversor.pdf", "rb") as pdf_file:
                 pdf_bytes = pdf_file.read()
                 st.download_button(label="📥 Descargar Ficha del Inversor", data=pdf_bytes, file_name="Ficha_Inversor.pdf", mime='application/pdf')
+    
+    st.divider() # Línea horizontal tenue para separar secciones
+    
+    # --- FILA 2: CONFIGURACIÓN Y GEOMETRÍA ---
+    colC, colD = st.columns(2)
+    with colC:
+        st.markdown("**Dimensionamiento Eléctrico**")
+        st.markdown("* **Capacidad Total DC:** 6.30 kWdc")
+        st.markdown("* **Capacidad Total AC:** 5.00 kWac")
+        st.markdown("* **Relación DC/AC (Oversizing):** 1.26")
+        st.markdown("* **Arreglo:** 1 String de 10 módulos en serie")
+        
+    with colD:
+        st.markdown("**Orientación y Emplazamiento**")
+        st.markdown("* **Estructura:** Fija (Sin seguimiento)")
+        st.markdown("* **Inclinación (Tilt):** 20°")
+        st.markdown("* **Azimut:** 180° (Orientación Sur)")
+        st.markdown("* **Orientación de Módulos:** Vertical (Portrait)")
+        st.markdown("* **GCR (Ground Coverage Ratio):** 0.3")
+
 st.markdown("---")
 
 # 4. Carga del Cerebro de la IA en Caché
