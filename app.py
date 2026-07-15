@@ -23,26 +23,28 @@ with st.expander("⚙️ Ver Ficha Técnica del Sistema Base (Hardware Modelado)
     colA, colB = st.columns(2)
     with colA:
         st.markdown("**Módulo Fotovoltaico**")
-        st.markdown("* **Marca/Modelo:** Escribe aquí la marca")
-        st.markdown("* **Capacidad Unitaria:** Escribe los Watts")
-        st.markdown("* **Eficiencia:** Escribe el %")
+        st.markdown("* **Marca/Modelo:** Trina Solar Vertex N (TSM-NEG19RC.20)")
+        st.markdown("* **Capacidad Unitaria:** 630 W")
+        st.markdown("* **Eficiencia:** 23.3%")
         
-        # Botón para descargar el PDF del panel (si lo subes a GitHub como panel.pdf)
+        # Corrección del botón: leer el archivo en bytes antes de descargarlo
         if os.path.exists("panel.pdf"):
             with open("panel.pdf", "rb") as pdf_file:
-                st.download_button(label="📥 Descargar Ficha del Panel", data=pdf_file, file_name="Ficha_Panel.pdf", mime='application/pdf')
+                pdf_bytes = pdf_file.read()
+                st.download_button(label="📥 Descargar Ficha del Panel", data=pdf_bytes, file_name="Ficha_Panel.pdf", mime='application/pdf')
 
-    with colB:
-        st.markdown("**Inversor Central**")
-        st.markdown("* **Marca/Modelo:** Escribe aquí el inversor")
-        st.markdown("* **Eficiencia Máxima:** Escribe el %")
-        st.markdown("* **Capacidad Total del Arreglo:** Escribe los kWp")
+with colB:
+        st.markdown("**Inversor Central (Base de Datos SAM/CEC)**")
+        st.markdown("* **Marca/Modelo:** Fronius Primo 5.0-1 (240V)")
+        st.markdown("* **Potencia Máxima CA:** 5.0 kW (5000 Wac)")
+        st.markdown("* **Eficiencia Ponderada CEC:** 96.93%")
+        st.markdown("* **Voltaje Nominal CA:** 240 Vac")
         
-        # Botón para descargar el PDF del inversor (si lo subes a GitHub como inversor.pdf)
+        # Botón de descarga
         if os.path.exists("inversor.pdf"):
             with open("inversor.pdf", "rb") as pdf_file:
-                st.download_button(label="📥 Descargar Ficha del Inversor", data=pdf_file, file_name="Ficha_Inversor.pdf", mime='application/pdf')
-
+                pdf_bytes = pdf_file.read()
+                st.download_button(label="📥 Descargar Ficha del Inversor", data=pdf_bytes, file_name="Ficha_Inversor.pdf", mime='application/pdf')
 st.markdown("---")
 
 # 4. Carga del Cerebro de la IA en Caché
