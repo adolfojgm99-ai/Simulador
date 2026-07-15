@@ -9,13 +9,18 @@ import os
 st.set_page_config(page_title="Simulador Solar IA", layout="centered")
 
 # 2. Encabezados Académicos e Institucionales
-st.markdown("<p style='text-align: center; color: gray;'>Programa Delfín 2026 | Estancia Internacional de Investigación</p>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align: center;'>Universidad Veracruzana 🤝 Universidad Tecnológica de Bolívar</h4>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: gray; margin-bottom: 0px;'>Programa Delfín 2026 | Estancia Internacional de Investigación</p>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; margin-top: 5px;'>Universidad Tecnológica de Bolívar</h3>", unsafe_allow_html=True)
+
+# Sección de Autores y Asesores
+st.markdown("""
+<div style='text-align: center; font-size: 15px; margin-bottom: 15px;'>
+    <b>Investigadores:</b> Adolfo de Jesús García Méndez &nbsp;|&nbsp; Mario Humberto Nava Piantzi<br>
+    <b>Asesores:</b> Jesús Antonio Martínez Velandia &nbsp;|&nbsp; Dr. Jairo Enrique Serrano Castañeda
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown("---")
-
-st.title("☀️ Simulador de Generación Fotovoltaica impulsado por IA")
-st.markdown("Sube un archivo climático horario y el algoritmo maestro XGBoost calculará la viabilidad energética de la instalación para la región de Xalapa.")
-
 # 3. Sección Técnica Desplegable (Hardware)
 with st.expander("⚙️ Ver Ficha Técnica del Sistema Base (Hardware Modelado)"):
     st.info("Las estimaciones de esta Inteligencia Artificial están calibradas bajo las curvas de eficiencia del siguiente hardware:")
