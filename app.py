@@ -66,11 +66,11 @@ if archivo_csv is not None:
         df_clima = pd.read_csv(archivo_csv, skiprows=2)
         df_diurno = df_clima[df_clima['GHI'] > 0].copy()
         
-        # Escalado y Predicción
+        # Extracción de variables
         X_input = df_diurno[['GHI', 'Temperature', 'Relative Humidity', 'Wind Speed']]
-        X_escalado = scaler_X.transform(X_input)
         
-        predicciones = modelo_xgb.predict(X_escalado)
+        # Predicción DIRECTA (Sin usar el escalador, tal como aprendió el XGBoost)
+        predicciones = modelo_xgb.predict(X_input)
         
         # Filtro físico: la energía fotovoltaica no puede ser negativa
         predicciones = np.maximum(0, predicciones)
