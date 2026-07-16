@@ -23,7 +23,7 @@ st.markdown("""
 st.markdown("---")
 # 3. Sección Técnica Desplegable (Hardware y Configuración)
 with st.expander("⚙️ Ver Ficha Técnica y Configuración del Sistema Base"):
-    st.info("Las estimaciones de esta Inteligencia Artificial están calibradas bajo las curvas de eficiencia y la configuración geométrica del siguiente arreglo:")
+    st.info("Las estimaciones de esta Inteligencia Artificial están calibradas para las condiciones meteorológicas de **Xalapa, Veracruz (México)**, bajo las curvas de eficiencia y la configuración geométrica del siguiente arreglo:")
     
     # --- FILA 1: HARDWARE ---
     colA, colB = st.columns(2)
@@ -63,6 +63,7 @@ with st.expander("⚙️ Ver Ficha Técnica y Configuración del Sistema Base"):
         
     with colD:
         st.markdown("**Orientación y Emplazamiento**")
+        st.markdown("* **Ubicación Base:** Xalapa, Veracruz, México")
         st.markdown("* **Estructura:** Fija (Sin seguimiento)")
         st.markdown("* **Inclinación (Tilt):** 20°")
         st.markdown("* **Azimut:** 180° (Orientación Sur)")
